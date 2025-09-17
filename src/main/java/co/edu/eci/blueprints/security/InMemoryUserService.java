@@ -6,15 +6,14 @@ import java.util.Map;
 
 @Service
 public class InMemoryUserService {
-    private final Map<String, String> users; // username -> hash
+    private final Map<String, String> users;
     private final PasswordEncoder encoder;
 
     public InMemoryUserService(PasswordEncoder encoder) {
         this.encoder = encoder;
         this.users = Map.of(
-            "student", encoder.encode("student123"),
-            "assistant", encoder.encode("assistant123")
-        );
+                "student", encoder.encode("student123"),
+                "assistant", encoder.encode("assistant123"));
     }
 
     public boolean isValid(String username, String rawPassword) {
